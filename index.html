@@ -4,15 +4,20 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>KLR</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
-
+    <link rel='stylesheet' href='/src/styles/styles3.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   </head>
   <body>
-  <div class="text-container">
-    Bubbles
+  <div class="navigation">
+    <span><img src="/src/img/klrlogo_1.png"></img></span>
+    <a href="index.html">Degen Olympics</a>
+    <a href="/src/sub-wheel.html">Sub Wheel</a>
+    <a href="/src/slots-wheel.html">Slots Wheel</a>
   </div>
   <div class="gradient-bg">
     <svg xmlns="http://www.w3.org/2000/svg">
@@ -24,6 +29,108 @@
         </filter>
       </defs>
     </svg>
+    <div class="container">
+      <div class="content">
+          <div id="round">
+              <p class="mode-pick">Mode Picker</p>
+              <div id="unbox-area">
+                  <div class="arrow-down"></div>
+                  <div id="cardList"></div>
+              </div>
+              <div class="btn-container">
+                  <button class="btn" onclick="openCase();">Roll</button>
+              </div>
+          </div>
+      </div>
+      <button id="shuffleButton">Shuffle</button>
+      <div id="bracket">
+        <div class="round">
+          <div class="player-area">
+            <!-- Player 1 -->
+            <div class="player-input">
+              <input type="text" id="player1" placeholder="Player 1">
+              <input type="number" id="player1-score" placeholder="Score">
+            </div>
+            <!-- Player 2 -->
+            <div class="player-input">
+              <input type="text" id="player2" placeholder="Player 2">
+              <input type="number" id="player2-score" placeholder="Score">
+            </div>
+            <!-- Player 3 -->
+            <div class="player-input">
+              <input type="text" id="player3" placeholder="Player 3">
+              <input type="number" id="player3-score" placeholder="Score">
+            </div>
+            <!-- Player 4 -->
+            <div class="player-input">
+              <input type="text" id="player4" placeholder="Player 4">
+              <input type="number" id="player4-score" placeholder="Score">
+            </div>
+            <!-- Player 5 -->
+            <div class="player-input">
+              <input type="text" id="player5" placeholder="Player 5">
+              <input type="number" id="player5-score" placeholder="Score">
+            </div>
+            <!-- Player 6 -->
+            <div class="player-input">
+              <input type="text" id="player6" placeholder="Player 6">
+              <input type="number" id="player6-score" placeholder="Score">
+            </div>
+            <!-- Player 7 -->
+            <div class="player-input">
+              <input type="text" id="player7" placeholder="Player 7">
+              <input type="number" id="player7-score" placeholder="Score">
+            </div>
+            <!-- Player 8 -->
+            <div class="player-input">
+              <input type="text" id="player8" placeholder="Player 8">
+              <input type="number" id="player8-score" placeholder="Score">
+            </div>
+          </div>
+        </div>
+        <!-- Winners of Round 1 -->
+        <div class="round-winners">
+          <div id="winner1-area">
+            <!-- Winner 1 -->
+            <input id="winner1" type="text" readonly>
+            <input id="winner1-round2-score" type="number" placeholder="Score" min="0">
+          </div>
+          <div id="winner2-area">
+            <!-- Winner 2 -->
+            <input id="winner2" type="text" readonly>
+            <input id="winner2-round2-score" type="number" placeholder="Score" min="0">
+          </div>
+          <div id="winner3-area">
+            <!-- Winner 3 -->
+            <input id="winner3" type="text" readonly>
+            <input id="winner3-round2-score" type="number" placeholder="Score" min="0">
+          </div>
+          <div id="winner4-area">
+            <!-- Winner 4 -->
+            <input id="winner4" type="text" readonly>
+            <input id="winner4-round2-score" type="number" placeholder="Score" min="0">
+          </div>
+        </div>
+        <!-- Final Winners -->
+        <div id="final-winners">
+          <div id="final-winner1-area">
+            <!-- Final Winner 1 -->
+            <input id="final-winner1" type="text" readonly>
+            <input id="final-winner1-final-score" type="number" placeholder="Score" min="0">
+          </div>
+          <div id="final-winner2-area">
+            <!-- Final Winner 2 -->
+            <input id="final-winner2" type="text" readonly>
+            <input id="final-winner2-final-score" type="number" placeholder="Score" min="0">
+          </div>
+        </div>
+        <div id="final-winner-area">
+            <input id="final-winner" type="text" readonly>
+  </div>
+      </div>
+      
+      
+</div>
     <div class="gradients-container">
       <div class="g1"></div>
       <div class="g2"></div>
@@ -33,6 +140,7 @@
       <div class="interactive"></div>
     </div>
   </div>
+    <script src='/src/scripts/script3.js'></script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
