@@ -1,10 +1,9 @@
+import blue from "../img/normal.png";
+import purple from "../img/crazy.png";
 const rollButton = document.getElementById("roll-button");
 rollButton.addEventListener("click", openCase);
-var img = {
-    blue: '<img src="src/img/normal.png"/>',
-    purple: '<img src="src/img/crazy.png"/>',
-  }
-  
+
+
   function reset(){
     $('.card').remove();
     for (var i = 0; i < 210; i++){
@@ -12,9 +11,9 @@ var img = {
       var element;
       
       if (rand <= 50){
-        element = '<div class="card" style="background-color: #9966ff;" data-rarity="Normal Mode" id=itemNumber'+i+'>'+img.blue+'</div>';
+        element = '<div class="card" style="background-color: #9966ff;" data-rarity="Normal Mode" id=itemNumber'+i+'>'+`<img src="${blue}"></img>`+'</div>';
       } else if (rand <= 100){
-        element = '<div class="card" style="background-color: #884dff;" data-rarity="Crazy Mode" id=itemNumber'+i+'>'+img.purple+'</div>';
+        element = '<div class="card" style="background-color: #884dff;" data-rarity="Crazy Mode" id=itemNumber'+i+'>'+`<img src="${purple}"></img>`+'</div>';
       }
   
       $('#cardList').append(element);
