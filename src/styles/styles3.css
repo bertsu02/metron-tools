@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Dongle', sans-serif;
+  }
+h1 {
+    text-align: center;
+    color: white;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 90;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 2%;
+}
+
+.content {
+    flex: 2;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: -1;
+}
+#round {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-bottom: 3%;
+
+}
+  #cardList {
+    height: 100px;
+    width: 800px;
+    position: relative;
+    border: 2px solid black;
+    overflow: hidden;
+    white-space: nowrap;
+    
+  }
+  
+  .card {
+    display: inline-block;
+    background-color: red;
+    text-align: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .card > img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .arrow-down {
+    margin-left: 380px;
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid rgb(144, 0, 255);
+  }
+
+.btn {
+    display: inline-block;
+    font-size: 32px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+  .btn-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+.mode-pick {
+  font-size: 100px;
+  color: white;
+  margin: 0;
+}
+input {
+  font-size: 30px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color:white;
+}
+  #bracket {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center horizontally */
+    gap: 5px;
+    margin: 0 auto;
+}
+
+.round {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Distribute rounds evenly */
+}
+
+.player-area {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.round-winners {
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+}
+
+#winner1-area,
+#winner2-area,
+#winner3-area,
+#winner4-area {
+  display: flex;
+  align-items: center; /* Center vertically */
+  gap: 10px;
+
+}
+
+#final-winners{
+  display: flex;
+  flex-direction: column;
+  gap: 190px;
+}
+/* Final winners container */
+#final-winners-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+}
+
+#final-winner1-area,
+#final-winner2-area {
+    display: flex;
+    align-items: center; /* Center vertically */
+    height: 100%;
+    gap: 10px;
+}
+
+#shuffleButton {
+  display: inline-block;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 15%;
+    height: 3%;
+    margin: -5px auto;
+}
