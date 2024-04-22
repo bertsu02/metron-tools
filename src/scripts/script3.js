@@ -1,3 +1,5 @@
+const rollButton = document.getElementById("roll-button");
+rollButton.addEventListener("click", openCase);
 var img = {
     blue: '<img src="src/img/normal.png"/>',
     purple: '<img src="src/img/crazy.png"/>',
