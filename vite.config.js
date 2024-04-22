@@ -7,7 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         src: resolve(__dirname, 'src/slots-wheel.html'),
-        spin: resolve(__dirname, 'src/sub-wheel.html')
+        spin: resolve(__dirname, 'src/sub-wheel.html'),
       },
     },
   },
