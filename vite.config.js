@@ -6,7 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        src: resolve(__dirname, ['src/slots-wheel.html','src/sub-wheel.html','src/kevin-spin.html']),
+        src: resolve(__dirname, 'src/slots-wheel.html'),
       },
     },
   },
