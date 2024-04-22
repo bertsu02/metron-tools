@@ -111,3 +111,40 @@ document.getElementById("final-winner1-final-score").oninput = function() {
 document.getElementById("final-winner2-final-score").oninput = function() {
     compareFinalScores("final-winner1", "final-winner2", "final-winner");
 };
+
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+function updatePairings() {
+  const players = [];
+  const scores = [];
+
+  $('.player-input input[type="text"]').each(function() {
+      players.push($(this).val());
+  });
+
+  $('.player-input input[type="number"]').each(function() {
+      scores.push($(this).val());
+  });
+
+  const shuffledPlayers = shuffleArray(players);
+  const shuffledScores = shuffleArray(scores);
+
+  $('.player-input input[type="text"]').each(function(index) {
+      $(this).val(shuffledPlayers[index]);
+  });
+
+  $('.player-input input[type="number"]').each(function(index) {
+      $(this).val(shuffledScores[index]);
+  });
+}
+
+$('#shuffleButton').click(function() {
+  updatePairings();
+});
