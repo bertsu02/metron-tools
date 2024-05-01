@@ -35,7 +35,7 @@
       { name: 'Try Again', startDeg: 90.01, endDeg: 112.49 },
       { name: 'Clash 50 Battle 30%', startDeg: 112.5, endDeg: 135 },
       { name: 'Try Again', startDeg: 135.01, endDeg: 157.49 },
-      { name: '10 gems on mines', startDeg: 157.5, endDeg: 180 },
+      { name: '10 gems upgrader', startDeg: 157.5, endDeg: 180 },
       { name: 'Try Again', startDeg: 180.01, endDeg: 202.49 },
       { name: 'Slots 5$ Tip', startDeg: 202.5, endDeg: 225 },
       { name: 'Try Again', startDeg: 225.01, endDeg: 247.49 },
@@ -43,7 +43,7 @@
       { name: 'Try Again', startDeg: 270.01, endDeg: 292.49 },
       { name: 'Clash 30 Battle 30%', startDeg: 292.5, endDeg: 315 },
       { name: 'Try Again', startDeg: 315.01, endDeg: 337.49 },
-      { name: '10 gems upgrader', startDeg: 337.5, endDeg: 360 },
+      { name: '10 gems on mines', startDeg: 337.5, endDeg: 360 },
 
     ];
 
