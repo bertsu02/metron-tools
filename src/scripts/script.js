@@ -78,3 +78,34 @@
   }
   
 })();
+let latestRolls = JSON.parse(localStorage.getItem('latestRolls')) || [];
+
+function updateLatestRolls(roll) {
+  latestRolls.unshift(roll);
+
+  if (latestRolls.length > 5) {
+    latestRolls.pop();
+  }
+  localStorage.setItem('latestRolls', JSON.stringify(latestRolls));
+  displayLatestRolls();
+}
+
+function displayLatestRolls() {
+  const latestRollsContainer = document.getElementById('latest-rolls-container');
+  latestRollsContainer.innerHTML = '';
+
+  const ul = document.createElement('ul');
+
+  latestRolls.forEach(roll => {
+    const li = document.createElement('li');
+    li.textContent = roll;
+    ul.appendChild(li);
+  });
+
+  latestRollsContainer.appendChild(ul);
+}
+
+displayLatestRolls();
+
+
+})();
