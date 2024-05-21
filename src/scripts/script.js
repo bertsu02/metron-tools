@@ -2,6 +2,7 @@
   const wheel = document.querySelector('.wheel');
   const startButton = document.querySelector('.button');
   const messageContainer = document.querySelector('.message-container');
+  const latestRollsContainer = document.getElementById('latest-rolls-container');
   let deg = 0;
 
   startButton.addEventListener('click', () => {
@@ -19,14 +20,13 @@
     const actualDeg = deg % 360;
     wheel.style.transform = `rotate(${actualDeg}deg)`;
 
-     const area = determineArea(actualDeg);
-
-     displayMessage(area);
+    const area = determineArea(actualDeg);
+    displayMessage(area);
+    updateLatestRolls(area);
+    displayLatestRolls();
   });
 
-
-
-   function determineArea(deg) {
+  function determineArea(deg) {
     const areas = [
       { name: 'Try Again', startDeg: 0, endDeg: 22.49 },
       { name: 'Empire 30€ Battle, Keep 20%', startDeg: 22.5, endDeg: 45 },
@@ -44,7 +44,6 @@
       { name: 'Clash 30 Battle 30%', startDeg: 292.5, endDeg: 315 },
       { name: 'Try Again', startDeg: 315.01, endDeg: 337.49 },
       { name: '10 gems on mines', startDeg: 337.5, endDeg: 360 },
-
     ];
 
     for (const area of areas) {
@@ -57,10 +56,9 @@
   }
 
   function displayMessage(area) {
-    const messageContainer = document.getElementById('message-container');
-    if (area === 'Kevin Spin')  {
+    if (area === 'Kevin Spin') {
       const proceedButton = document.createElement('button');
-      messageContainer.innerText = ` You have won a Kevin Spin!`;
+      messageContainer.innerText = `You have won a Kevin Spin!`;
       messageContainer.style.display = 'block';
       proceedButton.innerText = 'Proceed';
       proceedButton.onclick = function() {
@@ -76,36 +74,32 @@
       }, 3000);
     }
   }
-  
-})();
-let latestRolls = JSON.parse(localStorage.getItem('latestRolls')) || [];
 
-function updateLatestRolls(roll) {
-  latestRolls.unshift(roll);
+  let latestRolls = JSON.parse(localStorage.getItem('latestRolls')) || [];
 
-  if (latestRolls.length > 5) {
-    latestRolls.pop();
+  function updateLatestRolls(roll) {
+    latestRolls.unshift(roll);
+
+    if (latestRolls.length > 5) {
+      latestRolls.pop();
+    }
+    localStorage.setItem('latestRolls', JSON.stringify(latestRolls));
+    displayLatestRolls();
   }
-  localStorage.setItem('latestRolls', JSON.stringify(latestRolls));
+
+  function displayLatestRolls() {
+    latestRollsContainer.innerHTML = '';
+
+    const ul = document.createElement('ul');
+
+    latestRolls.forEach(roll => {
+      const li = document.createElement('li');
+      li.textContent = roll;
+      ul.appendChild(li);
+    });
+
+    latestRollsContainer.appendChild(ul);
+  }
+
   displayLatestRolls();
-}
-
-function displayLatestRolls() {
-  const latestRollsContainer = document.getElementById('latest-rolls-container');
-  latestRollsContainer.innerHTML = '';
-
-  const ul = document.createElement('ul');
-
-  latestRolls.forEach(roll => {
-    const li = document.createElement('li');
-    li.textContent = roll;
-    ul.appendChild(li);
-  });
-
-  latestRollsContainer.appendChild(ul);
-}
-
-displayLatestRolls();
-
-
 })();
