@@ -1,5 +1,5 @@
+$(document).ready(function() {
 var moneyList = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26];
-
 var numCasesOpenedPerRound = {
     1: 6,
     2: 5,
@@ -38,6 +38,7 @@ var winnings;
 var gameState;
 var myCase;
 var selectedCase;
+var percentDiv;
 
 initialize();
 
@@ -317,7 +318,7 @@ function displayInfo() {
             infoEl.html("Your Final Case is Case " + selectedCase.text() + "<br>Winnings: " + formatNumber(selectedCase.val())+ " Gems");
             break;
         case 11:
-            infoEl.html("You made a DEAL with the Banker.<br>Winnings: " + formatNumber(winnings)+ " Gems");
+            infoEl.html("You made a DEAL with Kevin.<br>Winnings: " + formatNumber(winnings)+ " Gems");
     }
 }
 
@@ -422,3 +423,4 @@ function percentile_z(p) {
     }
     return z;
 }
+});
