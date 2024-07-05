@@ -29,7 +29,7 @@
   function determineArea(deg) {
     const areas = [
       { name: 'Try Again', startDeg: 0, endDeg: 22.49 },
-      { name: '10$ Depo Howl', startDeg: 22.5, endDeg: 45 },
+      { name: '10$ Depo Shuffle', startDeg: 22.5, endDeg: 45 },
       { name: 'Try Again', startDeg: 45.01, endDeg: 67.49 },
       { name: 'Kevin Spin', startDeg: 67.5, endDeg: 90 },
       { name: 'Try Again', startDeg: 90.01, endDeg: 112.49 },
