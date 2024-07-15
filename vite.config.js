@@ -9,8 +9,8 @@ export default defineConfig({
         src: resolve(__dirname, 'src/slots-wheel.html'),
         spin: resolve(__dirname, 'src/sub-wheel.html'),
         kev: resolve(__dirname, 'src/kevin-spin.html'),
-        deal: resolve(__dirname, 'src/deal.html')
-
+        deal: resolve(__dirname, 'src/deal.html'),
+        plinko: resolve(__dirname, 'src/plinko.html')
       },
     },
   },

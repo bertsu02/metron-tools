@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KLR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/src/styles/style-plinko.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+  </head>
+  <body>
+  <div class="navigation">
+    <span><img src="/src/img/klrlogo_1.png" class="logo"></img></span>
+    <a href="../index.html">Degen Olympics</a>
+    <a href="/src/sub-wheel.html">Sub Wheel</a>
+    <!-- <a href="src/slots-wheel.html">Slots Wheel</a> -->
+    <a href="/src/deal.html">Deal Or No Deal</a>
+    <a href="/src/plinko.html">Plinko</a>
+  </div>
+  <div class="gradient-bg">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="ui wrapper">
+      <div class="ui grid">
+        <div class="ui twelve wide column">
+          <div class="target-wrapper">
+            <div>
+              <div class="x-position"></div>
+              <div class="target"></div>
+              <div class="bucket-labels">
+                <div class="bucket-wrapper" id="bucket-wrapper-0">
+                  <div class="score" id="bucket-0"></div>
+                  <div>2x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-1">
+                  <div class="score" id="bucket-1"></div>
+                  <div>1.5x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-2">
+                  <div class="score" id="bucket-2"></div>
+                  <div>1.5x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-3">
+                  <div class="score" id="bucket-3"></div>
+                  <div>1x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-4">
+                  <div class="score" id="bucket-4"></div>
+                  <div>1x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-5">
+                  <div class="score" id="bucket-5"></div>
+                  <div>1x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-6">
+                  <div class="score" id="bucket-6"></div>
+                  <div>0.5x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-7">
+                  <div class="score" id="bucket-7"></div>
+                  <div>0.5x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-8">
+                  <div class="score" id="bucket-8"></div>
+                  <div>0.5x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-9">
+                  <div class="score" id="bucket-9"></div>
+                  <div>0.5x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-9">
+                  <div class="score" id="bucket-10"></div>
+                  <div>1x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-9">
+                  <div class="score" id="bucket-11"></div>
+                  <div>1x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-9">
+                  <div class="score" id="bucket-12"></div>
+                  <div>1x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-9">
+                  <div class="score" id="bucket-13"></div>
+                  <div>1.5x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-9">
+                  <div class="score" id="bucket-13"></div>
+                  <div>1.5x</div>
+                </div>
+                <div class="bucket-wrapper" id="bucket-wrapper-9">
+                  <div class="score" id="bucket-13"></div>
+                  <div>2x</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="gradients-container">
+      <div class="g1"></div>
+      <div class="g2"></div>
+      <div class="g3"></div>
+      <div class="g4"></div>
+      <div class="g5"></div>
+      <div class="interactive"></div>
+    </div>
+  </div>
+    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/scripts/script-plinko.js"></script>
+  </body>
+</html>
