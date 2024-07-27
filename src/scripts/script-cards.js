@@ -104,41 +104,55 @@ $(document).ready(function () {
       }
     ];
   
-    boxItems.sort(function() { return 0.5 - Math.random() });
-  
-    $.each(boxItems, function (i, v) {
-        $(".parent").append(
-            '<div class="child" id="' + v.name + '" style="background-image: url(\'' + back + '\');"> \
-                     <span class="card-number">' + (i + 1) + '</span> \
-                     <div class="card-name">' + v.name + '</div> \
-            <img src="' + v.img +
-            '" style="width:50%; height:100%; margin-left: auto; margin-right: auto; margin-top: -48%; display:block;"></div>'
-        );
-    });
-    
-  
-    $(".parent").find(".card-name").hide();
-    $(".parent").find(".child img").hide();
-  
-    let openedCount = 0;
-  const maxOpens = 3;
+    function createCards() {
+        boxItems.sort(function () { return 0.5 - Math.random() });
 
-  const child = $(".parent").find(".child");
+        $(".parent").empty(); // Clear existing cards
 
-  $(child).click(function () {
-    if (!$(".parent").hasClass("disabled")) {
-      if (openedCount < maxOpens) {
-        $(this).find("img").show();
-        $(this).find(".card-name").show();
-        $(this).css("background-image", "none");
-        
-        openedCount++;
+        $.each(boxItems, function (i, v) {
+            $(".parent").append(
+                '<div class="child" id="' + v.name + '" style="background-image: url(\'' + back + '\');"> \
+                         <span class="card-number">' + (i + 1) + '</span> \
+                         <div class="card-name">' + v.name + '</div> \
+                <img src="' + v.img +
+                '" style="width:50%; height:100%; margin-left: auto; margin-right: auto; margin-top: -48%; display:block;"></div>'
+            );
+        });
 
-        if (openedCount === maxOpens) {
-          $(".parent").addClass("disabled");
-        }
-      }
+        $(".parent").find(".card-name").hide();
+        $(".parent").find(".child img").hide();
+
+        // Re-bind click event after cards are recreated
+        bindCardClickEvents();
     }
-  });
+
+    function bindCardClickEvents() {
+        $(".parent").find(".child").off("click").on("click", function () {
+            if (!$(".parent").hasClass("disabled")) {
+                if (openedCount < maxOpens) {
+                    $(this).find("img").show();
+                    $(this).find(".card-name").show();
+                    $(this).css("background-image", "none");
+                    
+                    openedCount++;
+
+                    if (openedCount === maxOpens) {
+                        $(".parent").addClass("disabled");
+                    }
+                }
+            }
+        });
+    }
+
+    let openedCount = 0;
+    const maxOpens = 3;
+
+    // Initial card creation and event binding
+    createCards();
+
+    $("#resetButton").click(function () {
+        openedCount = 0; // Reset the opened count
+        $(".parent").removeClass("disabled"); // Remove the disabled class
+        createCards(); // Re-create the cards
+    });
 });
-  
