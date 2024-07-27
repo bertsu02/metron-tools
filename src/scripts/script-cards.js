@@ -1,3 +1,5 @@
+import back from "../img/cardback.png";
+
 $(document).ready(function () {
     const boxItems = [
       {
@@ -105,14 +107,15 @@ $(document).ready(function () {
     boxItems.sort(function() { return 0.5 - Math.random() });
   
     $.each(boxItems, function (i, v) {
-      $(".parent").append(
-        '<div class="child" id="' + v.name + '" style="background-image: url(\'/src/img/cardback.png\');"> \
-                 <span class="card-number">' + (i + 1) + '</span> \
-                 <div class="card-name">' + v.name + '</div> \
-        <img src="' + v.img +
-        '" style="width:50%; height:100%; margin-left: auto; margin-right: auto; margin-top: -48%; display:block;"></div>'
-      );
+        $(".parent").append(
+            '<div class="child" id="' + v.name + '" style="background-image: url(\'' + back + '\');"> \
+                     <span class="card-number">' + (i + 1) + '</span> \
+                     <div class="card-name">' + v.name + '</div> \
+            <img src="' + v.img +
+            '" style="width:50%; height:100%; margin-left: auto; margin-right: auto; margin-top: -48%; display:block;"></div>'
+        );
     });
+    
   
     $(".parent").find(".card-name").hide();
     $(".parent").find(".child img").hide();
