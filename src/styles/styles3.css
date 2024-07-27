@@ -1,6 +1,10 @@
 * {
     box-sizing: border-box;
-    font-family: 'Dongle', sans-serif;
+    font-family: 'Dongle', sans-serif; 
+  }
+  body{
+    background-image: url('/src/img/backiground_site.png');
+    background-size: cover;
   }
 h1 {
     text-align: center;
@@ -30,7 +34,6 @@ body::before {
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.75);
     z-index: -1;
 }
 #round {

@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Dongle', sans-serif;
+}
+body {
+  background-image: url('/src/img/backiground_site.png');
+  background-size: cover;
+}
+h1 {
+  text-align: center;
+  color: white;
+}
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: transparent;
+  margin-top: 160px;
+}
+
+.child {
+  flex: 1 0 15%;
+  margin: 25px;
+  height: 150px;
+  border:1px solid #d7d7d73d;
+  border-radius:5px;
+}
+img{
+   border-radius:5px;
+}
+.card-number {
+  top: 5px;
+  left: 5px;
+  font-size: 32px;
+  font-weight: bold;
+  color: white; /* Adjust color for contrast */
+  padding: 5px;
+  border-radius: 5px;
+}
+.card-name {
+margin-top: 20%;
+  left: 0;
+  width: 100%;
+  font-size: 25px;
+  color: white; /* Adjust color for contrast */
+  background-color: rgba(0, 0, 0, 0.6); /* Optional background for better readability */
+  padding: 1.5px;
+  box-sizing: border-box;
+}

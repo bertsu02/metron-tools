@@ -2,7 +2,11 @@
   box-sizing: border-box;
   font-family: 'Dongle', sans-serif;
 }
-
+body {
+  background-image: url('/src/img/backiground_site.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 h1 {
   text-align: center;
   color: white;
@@ -15,7 +19,7 @@ h1 {
   z-index: 90;
   width: 80%;
   top: 50%;
-  left: 67%;
+  left: 60%;
   transform: translate(-50%, -50%);
   margin-top: 2%;
 }

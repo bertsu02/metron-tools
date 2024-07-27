@@ -157,7 +157,10 @@ function dropBall() {
     restitution: 0.9,
     friction: 0.01,
     frictionAir: 0.02,
-    collisionFilter: { group: 'ball' }
+    collisionFilter: { group: 'ball' },
+    render: {
+      fillStyle:'#d1db09'
+    }
   });
 
   Body.setVelocity(ball, {

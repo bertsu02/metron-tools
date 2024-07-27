@@ -1,4 +1,7 @@
-
+body {
+    background-image: url('/src/img/backiground_site.png');
+    background-size: cover;
+}
 #app {
     width: 800px;
     height: 800px;
@@ -32,6 +35,7 @@
   }
   .button {
     width: 250px;
+    margin-top: -15px;
     height: 80px;
     cursor: pointer;
     position: relative;

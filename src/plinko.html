@@ -13,7 +13,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.12.0/matter.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
   </head>
   <body>
   <div class="navigation">
@@ -23,17 +22,8 @@
     <!-- <a href="src/slots-wheel.html">Slots Wheel</a> -->
     <a href="/src/deal.html">Deal Or No Deal</a>
     <a href="/src/plinko.html">Plinko</a>
+    <a href="/src/cards.html">Tourney Cards</a>
   </div>
-  <div class="gradient-bg">
-    <svg xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="goo">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
-          <feBlend in="SourceGraphic" in2="goo" />
-        </filter>
-      </defs>
-    </svg>
     <div class="ui wrapper">
       <div class="ui grid">
         <div class="ui twelve wide column">
@@ -112,17 +102,6 @@
         </div>
       </div>
     </div>
-  
-
-    <div class="gradients-container">
-      <div class="g1"></div>
-      <div class="g2"></div>
-      <div class="g3"></div>
-      <div class="g4"></div>
-      <div class="g5"></div>
-      <div class="interactive"></div>
-    </div>
-  </div>
     <script type="module" src="/src/main.ts"></script>
     <script type="module" src="/src/scripts/script-plinko.js"></script>
   </body>
