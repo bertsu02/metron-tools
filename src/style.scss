@@ -11,11 +11,11 @@ html, body {
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 10px;
+  top: 20px;
   left: 0;
   justify-content: space-evenly;
   align-items: left;
-  font-size: 64px;
+  font-size: 48px;
   color: white;
   opacity: 0.8;
   user-select: none;
@@ -38,6 +38,10 @@ html, body {
 a {
   text-decoration: none;
   color: white;
+  margin-top: 1%;
+}
+a:hover {
+  color:  rgb(168, 18, 18);
 }
 @keyframes moveInCircle {
   0% {

@@ -1,0 +1,102 @@
+:root {
+  --clr-bg: #0b0d10;
+  --clr-txt: white;
+  --clr-hig: #161a20;
+  --clr-ter: #f0f0f0;
+}
+* {
+  box-sizing: border-box;
+  font-family: 'Dongle', sans-serif;
+}
+body {
+  background-image: url('/src/img/backiground_site.png');
+  background-size: cover;
+}
+.logo{
+  width: 100px;
+}
+h1 {
+  text-align: center;
+  color: white;
+}
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: transparent;
+  margin-top: 160px;
+}
+
+.child {
+  position: relative;
+  flex: 1 0 15%;
+  margin: 25px;
+  height: 150px;
+  border:1px solid #d7d7d73d;
+  border-radius:5px;
+  --clr-ter: #d7135b;
+  --clr-sec: #46006b;
+  color: var(--clr-txt);
+  padding: 1em 2em;
+  background-color: var(--clr-hig);
+  border: none;
+  font-size: 2.4rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  transition: box-shadow 200ms;
+}
+.child::after {  
+  --bor-hei: .5rem;
+  --bor-wid: .5rem;
+  content: '';
+  position: absolute;
+  height: calc(100% + var(--bor-hei));
+  width: calc(100% + var(--bor-wid));
+  background: linear-gradient(to right, var(--clr-ter), var(--clr-sec));
+  z-index: -1;
+}
+.child:hover {
+  cursor: pointer;
+  z-index: 0;
+  box-shadow: 3rem 0 5rem var(--clr-ter), -3rem 0 5rem var(--clr-sec);
+}
+.child[data-name="two"] img {
+  position: relative;
+  margin-top: -85%;
+  margin-left: 5%;
+  width: 300% !important; 
+  height: 150% !important; 
+}
+.child[data-name="onefive"] img {
+  position: relative;
+  margin-top: -85%;
+  margin-left: 5%;
+  width: 300% !important; 
+  height: 150% !important; 
+}
+.child[data-name="one"] img {
+  position: relative;
+  margin-top: -85%;
+  margin-left: 5%;
+  width: 300% !important; 
+  height: 150% !important; 
+}
+.child[data-name="zerofive"] img {
+  position: relative;
+  margin-top: -85%;
+  margin-left: 5%;
+  width: 300% !important; 
+  height: 150% !important; 
+}
+.card-number {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+}
+.card-correct {
+  box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.926); /* Green shadow effect */
+}

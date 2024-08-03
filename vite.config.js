@@ -11,7 +11,8 @@ export default defineConfig({
         kev: resolve(__dirname, 'src/kevin-spin.html'),
         deal: resolve(__dirname, 'src/deal.html'),
         plinko: resolve(__dirname, 'src/plinko.html'),
-        cards: resolve(__dirname, 'src/cards.html')
+        cards: resolve(__dirname, 'src/cards.html'),
+        matchcards:resolve(__dirname,'src/matchcards.html'),
       },
     },
   },
