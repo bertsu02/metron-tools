@@ -11,6 +11,7 @@
 body {
   background-image: url('/src/img/backiground_site.png');
   background-size: cover;
+  overflow: hidden;
 }
 .logo{
   width: 100px;
