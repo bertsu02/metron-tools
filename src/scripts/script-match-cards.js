@@ -1,25 +1,29 @@
+import twox from "../img/2x.png"
+import onefivex from "../img/1.5x.png"
+import onex from "../img/1x.png"
+import zerofivex from "../img/0.5x.png"
 $(document).ready(function () {
     const boxItems = [
-        { id: 1, name: "two", img: "/src/img/2x.png" },
-        { id: 2, name: "onefive", img: "/src/img/1.5x.png" },
-        { id: 3, name: "onefive", img: "/src/img/1.5x.png" },
-        { id: 4, name: "one", img: "/src/img/1x.png" },
-        { id: 5, name: "one", img: "/src/img/1x.png" },
-        { id: 6, name: "one", img: "/src/img/1x.png" },
-        { id: 7, name: "zerofive", img: "/src/img/0.5x.png" },
-        { id: 8, name: "zerofive", img: "/src/img/0.5x.png" },
-        { id: 9, name: "zerofive", img: "/src/img/0.5x.png" },
-        { id: 10, name: "zerofive", img: "/src/img/0.5x.png" },
-        { id: 11, name: "two", img: "/src/img/2x.png" },
-        { id: 12, name: "onefive", img: "/src/img/1.5x.png" },
-        { id: 13, name: "onefive", img: "/src/img/1.5x.png" },
-        { id: 14, name: "one", img: "/src/img/1x.png" },
-        { id: 15, name: "one", img: "/src/img/1x.png" },
-        { id: 16, name: "one", img: "/src/img/1x.png" },
-        { id: 17, name: "zerofive", img: "/src/img/0.5x.png" },
-        { id: 18, name: "zerofive", img: "/src/img/0.5x.png" },
-        { id: 19, name: "zerofive", img: "/src/img/0.5x.png" },
-        { id: 20, name: "zerofive", img: "/src/img/0.5x.png" }
+        { id: 1, name: "two", img: twox },
+        { id: 2, name: "onefive", img: onefivex },
+        { id: 3, name: "onefive", img: onefivex },
+        { id: 4, name: "one", img: onex },
+        { id: 5, name: "one", img: onex },
+        { id: 6, name: "one", img: onex },
+        { id: 7, name: "zerofive", img: zerofivex },
+        { id: 8, name: "zerofive", img: zerofivex },
+        { id: 9, name: "zerofive", img: zerofivex },
+        { id: 10, name: "zerofive", img: zerofivex },
+        { id: 11, name: "two", img: twox },
+        { id: 12, name: "onefive", img: onefivex },
+        { id: 13, name: "onefive", img: onefivex},
+        { id: 14, name: "one", img: onex },
+        { id: 15, name: "one", img: onex },
+        { id: 16, name: "one", img: onex },
+        { id: 17, name: "zerofive", img: zerofivex },
+        { id: 18, name: "zerofive", img: zerofivex },
+        { id: 19, name: "zerofive", img: zerofivex },
+        { id: 20, name: "zerofive", img: zerofivex }
     ];
 
     function shuffleAndDisplayCards() {
