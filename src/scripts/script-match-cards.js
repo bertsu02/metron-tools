@@ -27,10 +27,8 @@ $(document).ready(function () {
     ];
 
     function shuffleAndDisplayCards() {
-        // Shuffle array
         boxItems.sort(function () { return 0.5 - Math.random(); });
 
-        // Output all boxes with image and number label
         $(".parent").empty();
         $.each(boxItems, function (i, v) {
             $(".parent").append(
@@ -41,7 +39,6 @@ $(document).ready(function () {
             );
         });
 
-        // Hide all images in boxes
         $(".parent").find(".child img").hide();
     }
 
@@ -61,24 +58,20 @@ $(document).ready(function () {
         num++;
         guessCount++;
         $(this).find("img").show();
-
-        // Set the item value in array to match later
+        $(this).find(".card-number").hide();
         holdArray.push($(this).attr("data-id"));
 
         if (num == 2) {
-            // If first check img same as second one
             if ($(".parent").find("div[data-id='" + holdArray[0] + "']").attr("data-name") === $(".parent").find("div[data-id='" + holdArray[1] + "']").attr("data-name")) {
-                // Add the green shadow to only the correctly guessed pair
                 $(".parent").find("div[data-id='" + holdArray[0] + "']").addClass("card-correct");
                 $(".parent").find("div[data-id='" + holdArray[1] + "']").addClass("card-correct");
 
-                matched.push(holdArray[0]); // Add to matched array
+                matched.push(holdArray[0]);
                 holdArray.splice(0, holdArray.length);
                 num = 0;
                 moves.push(moveNum++);
                 pair.push(pairNum++);
             } else {
-                // Hide the images of unmatched cards
                 $(".parent")
                     .find("div[data-id='" + holdArray[0] + "'] img")
                     .delay(5000)
@@ -92,21 +85,18 @@ $(document).ready(function () {
                 moves.push(moveNum++);
             }
 
-            // Counting users moves
             $(".moves .moveCount").text(moves.length);
-            // Counting pairs
             $(".pairs .pairCount").text(pair.length);
             if (pair.length >= 10) {
                 alert("You Win");
             }
 
-            // Show all matched items
             $.each(matched, function (i) {
                 $(".parent").find("div[data-id='" + matched[i] + "']").show();
             });
         }
 
-        // Reset the card positions every 2 guesses
+
         if (guessCount >= 2) {
             guessCount = 0;
             setTimeout(function () {
