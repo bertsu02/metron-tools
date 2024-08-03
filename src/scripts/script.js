@@ -43,7 +43,7 @@
       { name: 'Try Again', startDeg: 270.01, endDeg: 292.49 },
       { name: 'Clash 30 Battle 30%', startDeg: 292.5, endDeg: 315 },
       { name: 'Try Again', startDeg: 315.01, endDeg: 337.49 },
-      { name: 'Deal Or No Deal - Clash', startDeg: 337.5, endDeg: 360 },
+      { name: 'Match The Cards - Shuffle', startDeg: 337.5, endDeg: 360 },
     ];
 
     for (const area of areas) {
