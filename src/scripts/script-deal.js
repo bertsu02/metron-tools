@@ -57,16 +57,13 @@ function reset() {
     window.location = window.location.href;
 }
 
-/* Game setup. Creates the Money Table, Assigns the Case Values, Resets Global Variables and Creates the DEAL and NO DEAL buttons */
+
 
 function createMoneyTable() {
     for (var i = 0; i < 26; i++) {
-        // Determine which column to append to
         var columnId = (i % 2 === 0) ? "#column-one" : "#column-two";
-
-        var divEl = $("<div>").text(formatNumber(moneyList[i]) + " Gem").attr({ "data-inplay": "yes", "value": moneyList[i] });
-
-        // Append the element to the appropriate column
+        var amountText = moneyList[i] === 1 ? "1 Coin" : formatNumber(moneyList[i]) + " Coins";
+        var divEl = $("<div>").text(amountText).attr({ "data-inplay": "yes", "value": moneyList[i] });
         $(columnId).append(divEl);
     }
 }
@@ -245,7 +242,6 @@ function newRound() {
 
 
 
-/*Updates the Stats Table */
 function updateStatsTable() {
     var ex = calcExpectedValue();
     var ex2 = calcEX2();
@@ -261,7 +257,7 @@ function updateStatsTable() {
 function displayOffer(offer) {
     var offerEl = $("<div>")
         .attr("id", "bankers-offer")
-        .text(formatNumber(offer) + " Gems");
+        .text(formatNumber(offer) + " Coins");
     $("#deal-btn").before(offerEl);
     var ratio = offer / calcExpectedValue();
     percentDiv = $("<div>")
@@ -312,13 +308,13 @@ function displayInfo() {
             infoEl.text("You chose Case " + myCase.text());
             break;
         case 1:
-            infoEl.html("You opened Case " + selectedCase.text() + "<br>Value: " + formatNumber(selectedCase.val()) + " Gems");
+            infoEl.html("You opened Case " + selectedCase.text() + "<br>Value: " + formatNumber(selectedCase.val()) + " Coins");
             break;
         case 10:
-            infoEl.html("Your Final Case is Case " + selectedCase.text() + "<br>Winnings: " + formatNumber(selectedCase.val())+ " Gems");
+            infoEl.html("Your Final Case is Case " + selectedCase.text() + "<br>Winnings: " + formatNumber(selectedCase.val())+ " Coins");
             break;
         case 11:
-            infoEl.html("You made a DEAL with Kevin.<br>Winnings: " + formatNumber(winnings)+ " Gems");
+            infoEl.html("You made a DEAL with Kevin.<br>Winnings: " + formatNumber(winnings)+ " Coins");
     }
 }
 
