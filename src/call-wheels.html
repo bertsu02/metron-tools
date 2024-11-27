@@ -13,10 +13,10 @@
       #latest-rolls-container {
         z-index: 999;
         position: absolute;
-        top: 37%; /* Adjust the value as needed */
-        right: 6.5%; /* Adjust the value as needed */
-        padding: 10px; /* Optional: add some padding */
-        border-radius: 5px; /* Optional: rounded corners */
+        top: 37%; 
+        right: 6.5%;
+        padding: 10px; 
+        border-radius: 5px;
         color: white;
         font-size: 32px;
         width: 13%;
@@ -29,13 +29,33 @@
       #latest-rolls-label {
       z-index: 999;
       position: absolute;
-      top: 35%; /* Adjust the value as needed */
-      right: 10%; /* Adjust the value as needed */
-      padding: 10px; /* Optional: add some padding */
-      border-radius: 5px; /* Optional: rounded corners */
+      top: 35%; 
+      right: 10%;
+      padding: 10px; 
+      border-radius: 5px; 
       color: white;
       font-size: 48px;
     }
+    
+    #wheel-selector {
+  position: absolute;
+  top: 30%; 
+  right: 5%; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#wheel-selector .wheel-image {
+  width: 150px; 
+  cursor: pointer;
+  border-radius: 5px; 
+  transition: transform 0.2s ease; 
+}
+
+#wheel-selector .wheel-image:hover {
+  transform: scale(1.1); 
+}
     </style>
   </head>
   <body>
@@ -49,11 +69,16 @@
     <a href="/src/call-wheels.html">Call Wheels</a>
     <a href="/src/matchcards.html">Match Cards</a>
   </div>
-    <div id="latest-rolls-label">Latest Rolls:</div>
-    <div id="latest-rolls-container"></div>
+    <!-- <div id="latest-rolls-label">Latest Rolls:</div>
+    <div id="latest-rolls-container"></div> -->
+    <div id="wheel-selector">
+      <img id="wheel1-img" src="img/clash.jpg" alt="Clash" class="wheel-image" />
+      <img id="wheel2-img" src="img/big.jpg" alt="Big" class="wheel-image" />
+      <img id="wheel3-img" src="img/rain.jpg" alt="Rain" class="wheel-image" />
+      </div>
     <div id="app">
       <img class="marker" src="img/marker.png" />
-      <img class="wheel" src="img/wheel.png" />
+      <img class="wheel" src="img/clash-wheel.png" />
       <img class="wheel2 hide" src="img/wheel2.png" />
       <div class="btn-container">
         <img class="button" src="img/button.png" />
@@ -61,7 +86,7 @@
       <img class="hide button2" src="img/button2.png" />
       <div class="message-container" id="message-container"></div>
   </div>
-  <script type="module" src="scripts/script.js"></script>
+  <script type="module" src="scripts/script-selector.js"></script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

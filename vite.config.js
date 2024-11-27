@@ -13,6 +13,7 @@ export default defineConfig({
         plinko: resolve(__dirname, 'src/plinko.html'),
         cards: resolve(__dirname, 'src/cards.html'),
         matchcards:resolve(__dirname,'src/matchcards.html'),
+        callwheels:resolve(__dirname, 'src/call-wheels.html')
       },
     },
   },
