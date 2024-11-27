@@ -49,15 +49,15 @@
       }
 
       wheel1Image.addEventListener('click', () => {
-        setWheel('wheel1', 'img/clash-wheel.png');
+        setWheel('wheel1', './img/clash-wheel.png');
       });
       
       wheel2Image.addEventListener('click', () => {
-        setWheel('wheel2', 'img/big-wheel.png');
+        setWheel('wheel2', './img/big-wheel.png');
       });
       
       wheel3Image.addEventListener('click', () => {
-        setWheel('wheel3', 'img/rain-wheel.png');
+        setWheel('wheel3', './img/rain-wheel.png');
       });
 
     startButton.addEventListener('click', () => {
