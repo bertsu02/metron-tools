@@ -1,6 +1,12 @@
 import clashWheelImg from "../img/clash-wheel.png";
 import bigWheelImg from "../img/big-wheel.png";
 import rainWheelImg from "../img/rain-wheel.png";
+import clashMarker from "../img/CLASH-MARKER.png";
+import bigMarker from "../img/BIG-MARKER.png";
+import rainMarker from "../img/RAIN-MARKER.png";
+import clashButton from "../img/clash-button.png"
+import bigButton from "../img/big-button.png"
+import rainButton from "../img/rain-button.png"
 
 (function () {
     const wheel = document.querySelector('.wheel');
@@ -11,6 +17,8 @@ import rainWheelImg from "../img/rain-wheel.png";
     const wheel1Image = document.getElementById("wheel1-img");
     const wheel2Image = document.getElementById("wheel2-img");
     const wheel3Image = document.getElementById("wheel3-img");
+    const marker = document.querySelector('.marker');
+    const button = document.querySelector('.button');
 
     let deg = 0;
 
@@ -52,14 +60,32 @@ import rainWheelImg from "../img/rain-wheel.png";
     function setWheel(wheelId, wheelImage) {
         currentWheel = wheelId;
         wheel.src = wheelImage;
+        updateMarker(wheelId);
+        updateButton(wheelId);
     }
-
-    // Set the images for the wheel selectors
+    function updateMarker(wheelId) {
+        if (wheelId === 'wheel1') {
+            marker.src = clashMarker;
+        } else if (wheelId === 'wheel2') {
+            marker.src = bigMarker;
+        } else if (wheelId === 'wheel3') {
+            marker.src = rainMarker;
+        }
+    }
+    function updateButton(wheelId) {
+        if (wheelId === 'wheel1') {
+            button.src = clashButton;
+        } else if (wheelId === 'wheel2') {
+            button.src = bigButton;
+        } else if (wheelId === 'wheel3') {
+            button.src = rainButton;
+        }
+    }
+  
     wheel1Image.src = clashWheelImg;
     wheel2Image.src = bigWheelImg;
     wheel3Image.src = rainWheelImg;
 
-    // Click event listeners for each wheel
     wheel1Image.addEventListener('click', () => {
         setWheel('wheel1', clashWheelImg);
     });
