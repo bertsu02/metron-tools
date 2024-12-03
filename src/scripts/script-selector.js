@@ -4,15 +4,14 @@ import rainWheelImg from "../img/rain-wheel.png";
 import clashMarker from "../img/CLASH-MARKER.png";
 import bigMarker from "../img/BIG-MARKER.png";
 import rainMarker from "../img/RAIN-MARKER.png";
-import clashButton from "../img/clash-button.png"
-import bigButton from "../img/big-button.png"
-import rainButton from "../img/rain-button.png"
+import clashButton from "../img/clash-button.png";
+import bigButton from "../img/big-button.png";
+import rainButton from "../img/rain-button.png";
 
 (function () {
     const wheel = document.querySelector('.wheel');
     const startButton = document.querySelector('.button');
     const messageContainer = document.querySelector('.message-container');
-    const latestRollsContainer = document.getElementById('latest-rolls-container');
 
     const wheel1Image = document.getElementById("wheel1-img");
     const wheel2Image = document.getElementById("wheel2-img");
@@ -81,7 +80,7 @@ import rainButton from "../img/rain-button.png"
             button.src = rainButton;
         }
     }
-  
+
     wheel1Image.src = clashWheelImg;
     wheel2Image.src = bigWheelImg;
     wheel3Image.src = rainWheelImg;
@@ -117,8 +116,6 @@ import rainButton from "../img/rain-button.png"
 
         const area = determineArea(actualDeg);
         displayMessage(area);
-        updateLatestRolls(area);
-        displayLatestRolls();
     });
 
     function determineArea(deg) {
@@ -150,32 +147,4 @@ import rainButton from "../img/rain-button.png"
             }, 3000);
         }
     }
-
-    let latestRolls = JSON.parse(localStorage.getItem('latestRolls')) || [];
-
-    function updateLatestRolls(roll) {
-        latestRolls.unshift(roll);
-
-        if (latestRolls.length > 5) {
-            latestRolls.pop();
-        }
-        localStorage.setItem('latestRolls', JSON.stringify(latestRolls));
-        displayLatestRolls();
-    }
-
-    function displayLatestRolls() {
-        latestRollsContainer.innerHTML = '';
-
-        const ul = document.createElement('ul');
-
-        latestRolls.forEach(roll => {
-            const li = document.createElement('li');
-            li.textContent = roll;
-            ul.appendChild(li);
-        });
-
-        latestRollsContainer.appendChild(ul);
-    }
-
-    displayLatestRolls();
 })();
