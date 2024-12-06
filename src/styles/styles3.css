@@ -10,65 +10,7 @@ h1 {
     text-align: center;
     color: white;
   }
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: absolute;
-    z-index: 90;
-    width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 2%;
-}
 
-.content {
-    flex: 2;
-}
-
-body::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-}
-#round {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-bottom: 3%;
-
-}
-  #cardList {
-    height: 100px;
-    width: 800px;
-    position: relative;
-    border: 2px solid black;
-    overflow: hidden;
-    white-space: nowrap;
-    
-  }
-  
-  .card {
-    display: inline-block;
-    background-color: red;
-    text-align: center;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    width: 100px;
-    height: 100px;
-  }
-  
-  .card > img {
-    width: 100px;
-    height: 100px;
-  }
-  
   .arrow-down {
     margin-left: 380px;
     width: 0; 
@@ -124,7 +66,7 @@ input {
   #bracket {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Center horizontally */
+    align-items: center;
     gap: 5px;
     margin: 0 auto;
 }
@@ -132,7 +74,7 @@ input {
 .round {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Distribute rounds evenly */
+    justify-content: space-between;
 }
 
 .player-area {
@@ -152,7 +94,7 @@ input {
 #winner3-area,
 #winner4-area {
   display: flex;
-  align-items: center; /* Center vertically */
+  align-items: center;
   gap: 10px;
 
 }
@@ -162,17 +104,17 @@ input {
   flex-direction: column;
   gap: 190px;
 }
-/* Final winners container */
+
 #final-winners-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center horizontally */
+    align-items: center;
 }
 
 #final-winner1-area,
 #final-winner2-area {
     display: flex;
-    align-items: center; /* Center vertically */
+    align-items: center;
     height: 100%;
     gap: 10px;
 }
