@@ -1,20 +1,17 @@
 const tagsEl = document.getElementById("tags");
 const textarea = document.getElementById("textarea");
 const winnerDisplay = document.getElementById("winner-display");
+const rollButton = document.getElementById("roll-button");
 let tagsArray = [];
 
 textarea.focus();
 
 textarea.addEventListener("keyup", (e) => {
   createTags(e.target.value);
+});
 
-  if (e.key === 'Enter') {
-    setTimeout(() => {
-      e.target.value = '';
-    }, 10);
-
-    randomSelect();
-  }
+rollButton.addEventListener("click", () => {
+  randomSelect();
 });
 
 function createTags(input) {
