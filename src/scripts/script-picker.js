@@ -31,35 +31,55 @@ function createTags(input) {
 }
 
 function randomSelect() {
-  const times = 30;
+  const times = 15;
 
-  const interval = setInterval(() => {
-    const randomTag = pickRandomTag();
+  const interval = setInterval(async () => {
+    const randomTag = await pickRandomTag();
 
-    highlightTag(randomTag);
+    if (randomTag) {
+      highlightTag(randomTag);
 
-    setTimeout(() => {
-      unHighlightTag(randomTag);
-    }, 100);
-  }, 100);
+      setTimeout(() => {
+        unHighlightTag(randomTag);
+      }, 75);
+    }
+  }, 75);
 
-  setTimeout(() => {
+  setTimeout(async () => {
     clearInterval(interval);
 
-    setTimeout(() => {
-      const randomTag = pickRandomTag();
+    setTimeout(async () => {
+      const randomTag = await pickRandomTag();
 
-      highlightTag(randomTag);
-      displayWinner(randomTag); 
-      removeWinner(randomTag); 
+      if (randomTag) {
+        highlightTag(randomTag);
+        displayWinner(randomTag);
+        removeWinner(randomTag);
+      } else {
+        console.warn('No valid tag was selected.');
+      }
     }, 100);
-
-  }, times * 100);
+  }, times * 75);
 }
 
-function pickRandomTag() {
+async function pickRandomTag() {
   const tags = document.querySelectorAll('.tag');
-  return tags[Math.floor(Math.random() * tags.length)];
+  if (tags.length === 0) return null;
+
+  try {
+    const max = tags.length - 1; // Adjust max for zero-based index
+    const response = await fetch(`https://www.random.org/integers/?num=1&min=0&max=${max}&col=1&base=10&format=plain&rnd=new`);
+    const index = parseInt(await response.text(), 10);
+
+    if (isNaN(index) || index < 0 || index > max) {
+      throw new Error('Invalid index received from random.org');
+    }
+
+    return tags[index];
+  } catch (error) {
+    console.error('Error fetching random number:', error);
+    return null;
+  }
 }
 
 function highlightTag(tag) {
