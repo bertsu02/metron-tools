@@ -31,55 +31,68 @@ function createTags(input) {
 }
 
 function randomSelect() {
-  const times = 15;
-
-  const interval = setInterval(async () => {
-    const randomTag = await pickRandomTag();
-
-    if (randomTag) {
-      highlightTag(randomTag);
+  const highlightTime = 15;
+  const intervalTime = 75;
+  const timesfetch = highlightTime + 1
+  // We need 'times' random numbers for the intermediate selections 
+  // plus 1 more for the final selection. 
+  
+  // Fetch all random numbers at once
+  fetchRandomIntegers(timesfetch)
+    .then(randomNumbers => {
+      // Once we have the numbers, start the interval
+      const interval = setInterval(() => {
+        const randomTag = pickRandomTag(randomNumbers);
+        if (randomTag) {
+          highlightTag(randomTag);
+          setTimeout(() => unHighlightTag(randomTag), intervalTime);
+        }
+      }, intervalTime);
 
       setTimeout(() => {
-        unHighlightTag(randomTag);
-      }, 75);
-    }
-  }, 75);
+        clearInterval(interval);
 
-  setTimeout(async () => {
-    clearInterval(interval);
-
-    setTimeout(async () => {
-      const randomTag = await pickRandomTag();
-
-      if (randomTag) {
-        highlightTag(randomTag);
-        displayWinner(randomTag);
-        removeWinner(randomTag);
-      } else {
-        console.warn('No valid tag was selected.');
-      }
-    }, 100);
-  }, times * 75);
+        // After the interval completes, pick the final winner
+        setTimeout(() => {
+          const randomTag = pickRandomTag(randomNumbers);
+          if (randomTag) {
+            highlightTag(randomTag);
+            displayWinner(randomTag);
+            removeWinner(randomTag);
+          } else {
+            console.warn('No valid tag was selected.');
+          }
+        }, 100);
+      }, highlightTime * intervalTime);
+    })
+    .catch(error => {
+      console.error('Error fetching initial random integers:', error);
+    });
 }
 
-async function pickRandomTag() {
+async function fetchRandomIntegers(num) {
   const tags = document.querySelectorAll('.tag');
-  if (tags.length === 0) return null;
-
-  try {
-    const max = tags.length - 1; // Adjust max for zero-based index
-    const response = await fetch(`https://www.random.org/integers/?num=1&min=0&max=${max}&col=1&base=10&format=plain&rnd=new`);
-    const index = parseInt(await response.text(), 10);
-
+  if (tags.length === 0) return [];
+  const max = tags.length - 1;
+  const lines = (await (await fetch(`https://www.random.org/integers/?num=${num}&min=0&max=${max}&col=1&base=10&format=plain&rnd=new`)).text()).split('\n').filter(Boolean);
+  const numbers = lines.map(line => {
+    const index = parseInt(line, 10);
     if (isNaN(index) || index < 0 || index > max) {
-      throw new Error('Invalid index received from random.org');
+      throw new Error(`Invalid index received from random.org: ${index}`);
     }
+    return index;
+  });
 
-    return tags[index];
-  } catch (error) {
-    console.error('Error fetching random number:', error);
-    return null;
-  }
+  return numbers;
+}
+
+function pickRandomTag(randomNumbers) {
+  const tags = document.querySelectorAll('.tag');
+  if (tags.length === 0 || randomNumbers.length === 0) return null;
+
+  // Get the next random number from the pre-fetched array
+  const index = randomNumbers.shift();
+  return tags[index];
 }
 
 function highlightTag(tag) {
