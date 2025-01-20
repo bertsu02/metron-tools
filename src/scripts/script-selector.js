@@ -4,6 +4,9 @@ import bigMarker from "../img/BIG-MARKER.png";
 import rainMarker from "../img/RAIN-MARKER.png";
 import bigButton from "../img/big-button.png";
 import rainButton from "../img/rain-button.png";
+import raveWheelImg from "../img/skinrave-wheel.png";
+import raveMarker from "../img/MARKER-SKINRAVE.png";
+import raveButton from "../img/button-SKINRAVE.png";
 
 (function () {
     const wheel = document.querySelector('.wheel');
@@ -12,6 +15,7 @@ import rainButton from "../img/rain-button.png";
 
     const wheel2Image = document.getElementById("wheel2-img");
     const wheel3Image = document.getElementById("wheel3-img");
+    const wheel4Image = document.getElementById("wheel4-img")
     const marker = document.querySelector('.marker');
     const button = document.querySelector('.button');
 
@@ -38,6 +42,16 @@ import rainButton from "../img/rain-button.png";
             { name: '10 Coins Tip', startDeg: 252, endDeg: 315 },
             { name: 'Battle Call', startDeg: 315, endDeg: 360 },
         ],
+        wheel4: [
+            { name: '25 Coins Tip', startDeg: 0, endDeg: 9 },
+            { name: '5 Coins Tip', startDeg: 9, endDeg: 72 },
+            { name: '10 Coins Tip', startDeg: 72, endDeg: 135 },
+            { name: 'Battle Call', startDeg: 135, endDeg: 180 },
+            { name: '25 Coins Tip', startDeg: 180, endDeg: 189 },
+            { name: '5 Coins Tip', startDeg: 189, endDeg: 252 },
+            { name: '10 Coins Tip', startDeg: 252, endDeg: 315 },
+            { name: 'Battle Call', startDeg: 315, endDeg: 360 },
+        ],
     };
 
     let currentWheel = 'wheel2';
@@ -54,6 +68,8 @@ import rainButton from "../img/rain-button.png";
             marker.src = bigMarker;
         } else if (wheelId === 'wheel3') {
             marker.src = rainMarker;
+        } else if (wheelId === 'wheel4') {
+            marker.src = raveMarker;
         }
     }
 
@@ -62,11 +78,14 @@ import rainButton from "../img/rain-button.png";
             button.src = bigButton;
         } else if (wheelId === 'wheel3') {
             button.src = rainButton;
+        } else if (wheelId === 'wheel4') {
+            button.src = raveButton;
         }
     }
 
     wheel2Image.src = bigWheelImg;
     wheel3Image.src = rainWheelImg;
+    wheel4Image.src = raveWheelImg;
 
     wheel2Image.addEventListener('click', () => {
         setWheel('wheel2', bigWheelImg);
@@ -75,7 +94,9 @@ import rainButton from "../img/rain-button.png";
     wheel3Image.addEventListener('click', () => {
         setWheel('wheel3', rainWheelImg);
     });
-
+    wheel4Image.addEventListener('click', () => {
+        setWheel('wheel4', raveWheelImg);
+    });
     // Start button event listener
     startButton.addEventListener('click', () => {
         startButton.style.pointerEvents = 'none';
