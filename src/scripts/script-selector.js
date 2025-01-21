@@ -61,6 +61,7 @@ import raveButton from "../img/button-SKINRAVE.png";
         wheel.src = wheelImage;
         updateMarker(wheelId);
         updateButton(wheelId);
+        setBackground(wheelId);
     }
 
     function updateMarker(wheelId) {
@@ -80,6 +81,16 @@ import raveButton from "../img/button-SKINRAVE.png";
             button.src = rainButton;
         } else if (wheelId === 'wheel4') {
             button.src = raveButton;
+        }
+    }
+    function setBackground(wheelId) {
+        const body = document.body;
+        if (wheelId === 'wheel2') {
+            body.style.backgroundImage = "url('/src/img/bigbg.png')";
+        } else if (wheelId === 'wheel3') {
+            body.style.backgroundImage = "url('/src/img/rainbg.png')";
+        } else if (wheelId === 'wheel4') {
+            body.style.backgroundImage = "url('/src/img/skinravebg.png')";
         }
     }
 
