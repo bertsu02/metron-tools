@@ -7,6 +7,9 @@ import rainButton from "../img/rain-button.png";
 import raveWheelImg from "../img/skinrave-wheel.png";
 import raveMarker from "../img/MARKER-SKINRAVE.png";
 import raveButton from "../img/button-SKINRAVE.png";
+import bigBackground from "../img/bigbg.png";
+import rainBackground from "../img/rainbg.png";
+import raveBackground from "../img/skinravebg.png";
 
 (function () {
     const wheel = document.querySelector('.wheel');
@@ -86,11 +89,11 @@ import raveButton from "../img/button-SKINRAVE.png";
     function setBackground(wheelId) {
         const body = document.body;
         if (wheelId === 'wheel2') {
-            body.style.backgroundImage = "url('/src/img/bigbg.png')";
+            body.style.backgroundImage =  `url(${bigBackground})`;
         } else if (wheelId === 'wheel3') {
-            body.style.backgroundImage = "url('/src/img/rainbg.png')";
+            body.style.backgroundImage = `url(${rainBackground})`;
         } else if (wheelId === 'wheel4') {
-            body.style.backgroundImage = "url('/src/img/skinravebg.png')";
+            body.style.backgroundImage = `url(${raveBackground})`;
         }
     }
 
