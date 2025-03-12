@@ -16,14 +16,14 @@ h3 {
     width: 400px;
     position: absolute;
     top: 15%; 
-    right: 3%; 
+    right: 13%; 
     display: flex;
     flex-direction: column;
 }
 
 textarea {
     font-size: 16px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(23, 15, 15, 0.671);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -57,4 +57,7 @@ textarea:focus {
     background-color: #f0932b;
     border: none;
     color: white;
+}
+#roll-button:hover {
+    background-color: #d5be22;
 }
