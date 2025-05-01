@@ -34,12 +34,18 @@ const render = Render.create({
 });
 
 const prizePool = [
-  { value: "1x", weight: 30 },
-  { value: "0.5x", weight: 25 },
-  { value: "2x", weight: 15 },
-  { value: "0x", weight: 10 },
-  { value: "5x", weight: 5 },
-  { value: "10x", weight: 1 },
+  { value: "0", weight: 300 },
+  { value: "2,5$", weight: 200 },
+  { value: "5$", weight: 150 },
+  { value: "7,5$", weight: 100 },
+  { value: "10$", weight: 100 },
+  { value: "15$", weight: 75 },
+  { value: "20$", weight: 40 },
+  { value: "25$", weight: 25 },
+  { value: "50$", weight: 15 },
+  { value: "75$", weight: 10 },
+  { value: "100$", weight: 5 },
+  { value: "Sub", weight: 150 },
 ];
 
 function getRandomPrize() {
