@@ -1,10 +1,10 @@
 const BALL_SIZE = 12;
 const CANVAS_HEIGHT = 800;
-const CANVAS_WIDTH = 1300;
+const CANVAS_WIDTH = 700;
 const PEG_X = 46;
 const PEG_Y = 46;
-const BUCKET_COLOR = '#633dd4';
-const HIGHLIGHT_COLOR = '#ffcc00';
+const BUCKET_COLOR = 'rgba(0, 200, 0, 0.2)';
+const HIGHLIGHT_COLOR = '#4cd316';
 const COLORS = [
   '#d1db09',
   '#f01653',
@@ -33,6 +33,41 @@ const render = Render.create({
   }
 });
 
+const prizePool = [
+  { value: "1x", weight: 30 },
+  { value: "0.5x", weight: 25 },
+  { value: "2x", weight: 15 },
+  { value: "0x", weight: 10 },
+  { value: "5x", weight: 5 },
+  { value: "10x", weight: 1 },
+];
+
+function getRandomPrize() {
+  const totalWeight = prizePool.reduce((sum, prize) => sum + prize.weight, 0);
+  let random = Math.random() * totalWeight;
+  for (const prize of prizePool) {
+    if (random < prize.weight) return prize.value;
+    random -= prize.weight;
+  }
+}
+
+function spawnParticles(x, y, count = 12) {
+  const container = document.getElementById("particle-container");
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement("div");
+    particle.className = "particle";
+    const angle = Math.random() * 2 * Math.PI;
+    const radius = 60 + Math.random() * 40;
+    particle.style.setProperty("--x", `${Math.cos(angle) * radius}px`);
+    particle.style.setProperty("--y", `${Math.sin(angle) * radius}px`);
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
+    container.appendChild(particle);
+
+    setTimeout(() => particle.remove(), 700);
+  }
+}
+
 const ground = Bodies.rectangle(
   CANVAS_WIDTH / 2,
   CANVAS_HEIGHT,
@@ -41,31 +76,37 @@ const ground = Bodies.rectangle(
   {
     id: 999,
     isStatic: true,
-    collisionFilter: { group: 'ground' }
+    collisionFilter: { group: 'ground' },
+    render: {
+      visible: false 
+    }
   }
 );
 const ground2 = Bodies.rectangle(0, CANVAS_HEIGHT, CANVAS_WIDTH * 3, 50, {
   id: 9999,
   isStatic: true,
-  collisionFilter: { group: 'ground' }
+  collisionFilter: { group: 'ground' },
+  render: {
+    visible: false
+  }
 });
 
 const pegs = [];
-const pegRadius = 5;
-for (let i = 1; i < CANVAS_HEIGHT / PEG_Y - 2; i++) {  // Skip the last row
-  for (let j = 1; j < CANVAS_WIDTH / PEG_X + 1; j++) {
-    let x = j * PEG_X - BALL_SIZE * 1.5;
-    const y = i * PEG_Y;
+const pegRadius = 6;
+const numRows = 15; 
+for (let row = 0; row < numRows; row++) {
+  const pegsInRow = row + 1;
+  const y = (row + 1) * PEG_Y;
 
-    if (i % 2 == 0) {
-      x -= PEG_X / 2;
-    }
+  for (let i = 0; i < pegsInRow; i++) {
+    const totalWidth = (pegsInRow - 1) * PEG_X;
+    const x = (CANVAS_WIDTH / 2 - totalWidth / 2) + i * PEG_X;
 
     const peg = Bodies.circle(x, y, pegRadius, {
       isStatic: true,
       render: {
-        fillStyle: '#a831d4',
-        strokeStyle: '#7b0da3',
+        fillStyle: '#4cd316',
+        strokeStyle: '#4cd316',
         lineWidth: 2
       }
     });
@@ -73,28 +114,70 @@ for (let i = 1; i < CANVAS_HEIGHT / PEG_Y - 2; i++) {  // Skip the last row
   }
 }
 
-const leftWall = Bodies.rectangle(
-  -1,
-  CANVAS_HEIGHT / 2 + BALL_SIZE * 2,
-  1,
-  CANVAS_HEIGHT * 2,
+const wallLength = 900;
+const angle = Math.atan((PEG_Y * numRows) / (PEG_X * (numRows / 2))); 
+
+const leftFunnelWall = Bodies.rectangle(
+  CANVAS_WIDTH / 2 - (PEG_X * numRows / 2) + 145,
+  CANVAS_HEIGHT / 2 ,
+  wallLength,
+  20,
   {
-    isStatic: true
-  }
-);
-const rightWall = Bodies.rectangle(
-  CANVAS_WIDTH + 1,
-  CANVAS_HEIGHT / 2 + BALL_SIZE * 2,
-  1,
-  CANVAS_HEIGHT * 2,
-  {
-    isStatic: true
+    isStatic: true,
+    angle: -angle,
+    render: {
+      fillStyle: 'rgba(0, 200, 0, 0.2)',
+      visible: true
+    }
   }
 );
 
+const rightFunnelWall = Bodies.rectangle(
+  CANVAS_WIDTH / 2 + (PEG_X * numRows / 2) - 145,
+  CANVAS_HEIGHT / 2 ,
+  wallLength,
+  20,
+  {
+    isStatic: true,
+    angle: angle,
+    render: {
+      fillStyle: 'rgba(0, 200, 0, 0.2)',
+      visible: true
+    }
+  }
+);
+
+const bucketWrappers = document.querySelectorAll(".bucket-wrapper");
+
+async function randomizePrizesSequentially() {
+  for (let i = 0; i < bucketWrappers.length; i++) {
+    const wrapper = bucketWrappers[i];
+    const prize = getRandomPrize();
+    const label = wrapper.querySelector("div:last-child");
+
+    label.style.opacity = 0;
+    label.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+    label.style.transform = "scale(1.3)";
+
+    await new Promise(resolve => setTimeout(resolve, 100)); 
+
+
+    label.textContent = prize;
+    label.style.opacity = 1;
+    label.style.transform = "scale(1)";
+    
+    const rect = label.getBoundingClientRect();
+    spawnParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
+    await new Promise(resolve => setTimeout(resolve, 150)); 
+  }
+}
+document.getElementById("randomize-btn").addEventListener("click", randomizePrizesSequentially);
+
+
 const buckets = [];
 const bucketIdRange = [];
-const bucketWidth = CANVAS_WIDTH / 16;
+const bucketWidth = CANVAS_WIDTH / 8;
 const bucketHeight = BALL_SIZE * 3;
 for (let i = 0; i < 16; i++) {
   const bucket = Bodies.rectangle(
@@ -115,14 +198,14 @@ for (let i = 0; i < 16; i++) {
     }
   );
   const divider = Bodies.rectangle(
-    bucketWidth * i,
+    bucketWidth * i ,
     CANVAS_HEIGHT - bucketHeight,
-    2,
-    CANVAS_HEIGHT / 9,
+    8,
+    CANVAS_HEIGHT / 16,
     {
       isStatic: true,
       render: {
-        fillStyle: '#633dd4'
+        fillStyle: '#4cd316'
       },
       collisionFilter: { group: 'bucket' }
     }
@@ -137,8 +220,8 @@ World.add(engine.world, [
   ...pegs,
   ...buckets,
   ground,
-  leftWall,
-  rightWall
+  leftFunnelWall,
+  rightFunnelWall
 ]);
 Engine.run(engine);
 Render.run(render);
@@ -152,14 +235,15 @@ function dropBall() {
   }
 
   const dropX = CANVAS_WIDTH / 2;
+  const dropY = PEG_Y * 1.5;
 
-  const ball = Bodies.circle(dropX, BALL_SIZE, BALL_SIZE, {
+  const ball = Bodies.circle(dropX, dropY, BALL_SIZE, {
     restitution: 0.9,
     friction: 0.01,
     frictionAir: 0.02,
     collisionFilter: { group: 'ball' },
     render: {
-      fillStyle:'#d1db09'
+      fillStyle:'#FFFFFF'
     }
   });
 
