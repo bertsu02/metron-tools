@@ -41,7 +41,7 @@ a {
   flex-direction: row;
   position: absolute;
   z-index: 90;
-  width: 90%;
+  width: 100%;
   top: 50%;
   left: 60%;
   transform: translate(-50%, -50%);
@@ -71,8 +71,8 @@ h2 {
 }
 
 .card {
-  width: 80px;
-  height: 110px;
+  width: 100px;
+  height: 130px;
   display: inline-block;
   margin: 0 auto;
   background-image: url(../img/box_1.png);
@@ -164,7 +164,7 @@ h2 {
 .bankerInfo{
   color: #fedc00;
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 3.5rem;
   text-align: center;
   margin-left: -20%;
 }
@@ -173,7 +173,7 @@ h2 {
   color: white;
   font-weight: bold;
   margin-top: 5%;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-right: 5rem;
   margin-left: 2%;
   text-align: center;
@@ -234,7 +234,7 @@ h2 {
 #infoDisplayed {
   color: white;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-top: 1.5rem;
   padding-left: 1rem;
 }

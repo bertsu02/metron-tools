@@ -173,18 +173,11 @@ function removeSelectedCase(el) {
 function bankersOffer() {
     gameState = 2;
 
-    var mean = bankersOfferMeanSD[round][0];
-    var sd = bankersOfferMeanSD[round][1];
-
-    var pvalue = Math.random() * 0.95 - 0.475;
-    var z = percentile_z(pvalue);
     var ex = calcExpectedValue();
-    var pi = z * sd + mean;
-
-    offer = Math.round(0.01 * pi * ex);
-
+    offer = Math.round(ex); 
     offerDeal(round);
 }
+
 
 function offerDeal(thisRound) {
 
@@ -322,7 +315,7 @@ function displayInfo() {
             infoEl.html("You opened Case " + selectedCase.text() + "<br>Value: " + formatNumber(selectedCase.val()));
             break;
         case 10:
-            infoEl.html("Your Final Case is Case " + selectedCase.text() + "<br>Winnings: " + formatNumber(selectedCase.val())+ " Coins");
+            infoEl.html("Your Final Case is Case " + selectedCase.text() + "<br>Winnings: " + formatNumber(selectedCase.val()));
             break;
         case 11:
             infoEl.html("You made a DEAL with Metron.<br>Winnings: " + formatNumber(winnings));
