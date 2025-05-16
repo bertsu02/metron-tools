@@ -9,15 +9,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='/src/styles/styles.css'>
+    <link rel='stylesheet' href='/src/styles/styles-gambapoly.css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
   </head>
   <body>
   <div class="navigation">
     <span><img class="logo" src="/src/img/logo.png"></img></span>
-    <a href="index.html">Home</a>
+    <a href="index.html">GambaPoly</a>
     <a href="src/plinko.html">Plinko</a>
     <a href="src/deal.html">Deal Or No Deal</a>
   </div>
+  <div id="board"></div>
+    <div id="controls">
+        <div id="dice">🎲</div>
+        <button id="rollBtn" onclick="rollDice()">Roll</button>
+        <button id="resetBtn" onclick="resetGame()">Reset</button>
+        <button id="cashoutBtn" onclick="cashOut()">Cash Out</button>
+        <p id="status">Balance: $0</p>
+    </div>
+
+    <div id="eventPopup">
+    <p id="eventDescription"></p>
+    <button onclick="closeEventPopup()">OK</button>
+    </div>
+
+<script type="module" src="/src/scripts/gambapoly.js">
+
+</script>
   </body>
 </html>
