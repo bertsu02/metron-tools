@@ -1,5 +1,13 @@
 import playerImg from '../img/123.png';
 import logoPath from '../img/gambapoly.png';
+import tileStart from '../img/tiles/start.png';
+import tileQuestion from '../img/tiles/question.png';
+import tileBomb from '../img/tiles/bomb.png';
+import prize1 from '../img/tiles/1.png';
+import prize2 from '../img/tiles/2.png';
+import prize3 from '../img/tiles/3.png';
+import prize4 from '../img/tiles/4.png';
+import prize5 from '../img/tiles/5.png';
 
 const totalTiles = 40;
 let position = 0;
@@ -12,17 +20,18 @@ const eventTiles = new Set();
 const bankruptSet = new Set();
 
 const tileImages = {
-  start: 'src/img/tiles/start.png',
-  event: 'src/img/tiles/question.png',
-  bankrupt: 'src/img/tiles/bomb.png',
+  start: tileStart,
+  event: tileQuestion,
+  bankrupt: tileBomb,
   prize: {
-    1: 'src/img/tiles/1.png',
-    2: 'src/img/tiles/2.png',
-    3: 'src/img/tiles/3.png',
-    4: 'src/img/tiles/4.png',
-    5: 'src/img/tiles/5.png',
+    1: prize1,
+    2: prize2,
+    3: prize3,
+    4: prize4,
+    5: prize5,
   },
 };
+
 
 const board = document.getElementById("board");
 const diceDisplay = document.getElementById("dice");
