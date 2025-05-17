@@ -12,6 +12,7 @@ import prize5 from '../img/tiles/5.png';
 const totalTiles = 40;
 let position = 0;
 let balance = 0;
+let movesTotal = 0;
 const winAmount = 50;
 const tileMap = [];
 const tileTypes = Array(totalTiles).fill("neutral");
@@ -68,15 +69,15 @@ for (let i = 0; i < totalTiles; i++) {
 
 const eventDescriptions = {
   1: "You feel degen and you deposited.",
-  2: "You won a tip!",
-  3: "You invested in memecoin and lost it.",
+  2: "MetroN is giving a generous Juice up of $1-10",
+  3: "You dropped your wallet and hyers stole $5.",
   4: "You joined a free and won!",
   5: "You joined a free and lost.",
-  6: "Gas fees ate your wallet.",
+  6: "lafka just begged you for $4",
   7: "You ran your daily up!",
   8: "You were too slow to join the free.",
   9: "Monthly Out!",
-  10: "IRS found your wallet.",
+  10: "You just got Fanum taxed and lost 50% of your balance",
 };
 
 function triggerEvent() {
@@ -90,14 +91,20 @@ function triggerEvent() {
       message += ` Your balance is now ${factor}x!`;
       break;
     case 2:
+      const reward = Math.floor(Math.random() * 10) + 1; 
+      balance += reward;
+      message += ` Gained $${reward}!`;
+      break;
     case 4:
       balance += 5;
       message += " +$5 ";
       break;
     case 3:
+            balance = Math.max(0, balance - 5);
+      break;
     case 6:
-      balance = Math.max(0, balance - 5);
-      message += " -$5 ";
+      balance = Math.max(0, balance - 4);
+      message += " -$4 ";
       break;
     case 7:
     case 9:
@@ -106,7 +113,6 @@ function triggerEvent() {
       break;
     case 10:
       balance = Math.floor(balance / 2);
-      message += " You lost half your balance!";
       break;
     default:
       message += " Nothing happened.";
@@ -229,14 +235,24 @@ function movePlayer(steps, callback) {
   let moves = 0;
   const interval = setInterval(() => {
     position = (position + 1) % totalTiles;
-    drawBoard();
     moves++;
+    movesTotal++;
+    drawBoard();
+
+    if (movesTotal >= totalTiles && position === 0) {
+      clearInterval(interval);
+      updateStatus(`You've completed a full loop! 🎯 Final Balance: $${balance}`);
+      document.getElementById("rollBtn").disabled = true;
+      return;
+    }
+
     if (moves >= steps) {
       clearInterval(interval);
       callback();
     }
   }, 300);
 }
+
 
 function rollDice() {
   if (balance >= winAmount) return;
@@ -250,8 +266,9 @@ function rollDice() {
       } else {
         const tileType = tileTypes[position];
         if (tileType === "bankrupt") {
-          message += "Bankrupt tile! 💥 Game Over.";
-          document.querySelector("button").disabled = true;
+          message += "Bankrupt tile! 💥 You lost all your money!";
+          balance = 0;
+
         } else if (tileType === "prize") {
           const prize = prizeValues[position];
           balance += prize;
@@ -268,6 +285,7 @@ function rollDice() {
     });
   });
 }
+movesTotal = 0;
 
 function resetGame() {
   position = 0;
