@@ -69,15 +69,15 @@ for (let i = 0; i < totalTiles; i++) {
 
 const eventDescriptions = {
   1: "You feel degen and you deposited.",
-  2: "MetroN is giving a generous Juice up of $1-10",
+  2: "MetroN is giving a generous Juice up of $1-10.",
   3: "You dropped your wallet and hyers stole $5.",
-  4: "You joined a free and won!",
-  5: "You joined a free and lost.",
-  6: "lafka just begged you for $4",
-  7: "You ran your daily up!",
-  8: "You were too slow to join the free.",
-  9: "Monthly Out!",
-  10: "You just got Fanum taxed and lost 50% of your balance",
+  4: "You succesfully begged fetter for a free +7$.",
+  5: "You got timed out by paun -3$.",
+  6: "lafka just begged you for $4.",
+  7: "MRBEAST just donated you 5$.",
+  8: "Metron ignores your gw ticket you lose half balance.",
+  9: "suryy was generous and gifted you a sub +5$.",
+  10: "You just got Fanum taxed and lost 50% of your balance.",
 };
 
 function triggerEvent() {
@@ -96,20 +96,25 @@ function triggerEvent() {
       message += ` Gained $${reward}!`;
       break;
     case 4:
-      balance += 5;
-      message += " +$5 ";
+      balance += 7;
       break;
     case 3:
             balance = Math.max(0, balance - 5);
       break;
+    case 5 :
+      balance = Math.max(0, balance - 3);
+      break;
     case 6:
       balance = Math.max(0, balance - 4);
-      message += " -$4 ";
       break;
     case 7:
+      balance += 5;
+      break;
+      case 8:
+              balance = Math.floor(balance / 2);
+      break;
     case 9:
       balance += 5;
-      message += " You gained $5!";
       break;
     case 10:
       balance = Math.floor(balance / 2);
