@@ -5,19 +5,15 @@ const PEG_X = 46;
 const PEG_Y = 46;
 const BUCKET_COLOR = 'rgba(0, 200, 0, 0.2)';
 const HIGHLIGHT_COLOR = '#4cd316';
-const COLORS = [
-  '#d1db09',
-  '#f01653',
-  '#46d11f',
-
-];
+const COLORS = ['#d1db09', '#f01653', '#46d11f'];
 
 const Engine = Matter.Engine,
   Render = Matter.Render,
   World = Matter.World,
   Bodies = Matter.Bodies,
   Events = Matter.Events,
-  Body = Matter.Body;
+  Body = Matter.Body,
+  Vertices = Matter.Vertices;
 
 const engine = Engine.create({
   timing: { timeScale: 0.5 }
@@ -83,23 +79,19 @@ const ground = Bodies.rectangle(
     id: 999,
     isStatic: true,
     collisionFilter: { group: 'ground' },
-    render: {
-      visible: false 
-    }
+    render: { visible: false }
   }
 );
 const ground2 = Bodies.rectangle(0, CANVAS_HEIGHT, CANVAS_WIDTH * 3, 50, {
   id: 9999,
   isStatic: true,
   collisionFilter: { group: 'ground' },
-  render: {
-    visible: false
-  }
+  render: { visible: false }
 });
 
 const pegs = [];
 const pegRadius = 6;
-const numRows = 15; 
+const numRows = 15;
 for (let row = 0; row < numRows; row++) {
   const pegsInRow = row + 1;
   const y = (row + 1) * PEG_Y;
@@ -121,11 +113,11 @@ for (let row = 0; row < numRows; row++) {
 }
 
 const wallLength = 900;
-const angle = Math.atan((PEG_Y * numRows) / (PEG_X * (numRows / 2))); 
+const angle = Math.atan((PEG_Y * numRows) / (PEG_X * (numRows / 2)));
 
 const leftFunnelWall = Bodies.rectangle(
   CANVAS_WIDTH / 2 - (PEG_X * numRows / 2) + 145,
-  CANVAS_HEIGHT / 2 ,
+  CANVAS_HEIGHT / 2,
   wallLength,
   20,
   {
@@ -140,7 +132,7 @@ const leftFunnelWall = Bodies.rectangle(
 
 const rightFunnelWall = Bodies.rectangle(
   CANVAS_WIDTH / 2 + (PEG_X * numRows / 2) - 145,
-  CANVAS_HEIGHT / 2 ,
+  CANVAS_HEIGHT / 2,
   wallLength,
   20,
   {
@@ -165,26 +157,25 @@ async function randomizePrizesSequentially() {
     label.style.transition = "opacity 0.3s ease, transform 0.3s ease";
     label.style.transform = "scale(1.3)";
 
-    await new Promise(resolve => setTimeout(resolve, 100)); 
-
+    await new Promise(resolve => setTimeout(resolve, 100));
 
     label.textContent = prize;
     label.style.opacity = 1;
     label.style.transform = "scale(1)";
-    
+
     const rect = label.getBoundingClientRect();
     spawnParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
 
-    await new Promise(resolve => setTimeout(resolve, 150)); 
+    await new Promise(resolve => setTimeout(resolve, 150));
   }
 }
 document.getElementById("randomize-btn").addEventListener("click", randomizePrizesSequentially);
-
 
 const buckets = [];
 const bucketIdRange = [];
 const bucketWidth = CANVAS_WIDTH / 8;
 const bucketHeight = BALL_SIZE * 3;
+
 for (let i = 0; i < 16; i++) {
   const bucket = Bodies.rectangle(
     bucketWidth * i + bucketWidth * 0.5,
@@ -203,22 +194,28 @@ for (let i = 0; i < 16; i++) {
       }
     }
   );
-  const divider = Bodies.rectangle(
-    bucketWidth * i ,
+
+  const triangle = Bodies.fromVertices(
+    bucketWidth * i,
     CANVAS_HEIGHT - bucketHeight,
-    8,
-    CANVAS_HEIGHT / 16,
+    [
+      { x: 0, y: 50 },
+      { x: 8, y: 50 },
+      { x: 4, y: 0 }
+    ],
     {
       isStatic: true,
       render: {
         fillStyle: '#4cd316'
       },
       collisionFilter: { group: 'bucket' }
-    }
+    },
+    true
   );
+
   bucketIdRange.push(i);
   buckets.push(bucket);
-  buckets.push(divider);
+  buckets.push(triangle);
 }
 
 World.add(engine.world, [
@@ -231,6 +228,7 @@ World.add(engine.world, [
 ]);
 Engine.run(engine);
 Render.run(render);
+
 let ballCount = 0;
 
 function dropBall() {
@@ -249,7 +247,7 @@ function dropBall() {
     frictionAir: 0.02,
     collisionFilter: { group: 'ball' },
     render: {
-      fillStyle:'#FFFFFF'
+      fillStyle: '#FFFFFF'
     }
   });
 
